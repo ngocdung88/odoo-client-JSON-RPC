@@ -27,7 +27,7 @@ module.exports = (function () {
         }
 
         if (!opts || !this.opts.password){
-            this.opts.db = process.env.PASSWORD;
+            this.opts.password = process.env.PASSWORD;
         }
 
         if (!opts || !this.opts.login){

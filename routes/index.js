@@ -4,11 +4,9 @@
  */
 var odoo = require('../odoo.js');
 exports.index = function(req, res){
-	console.dir(req.query.client_req);
-	client_req = req.query.client_req;
+	const client_req = req.query.client_req;
 	var data =  JSON.parse(client_req);
-	console.dir(data.opts.login);
-	
+
 	var client = new odoo(data.opts);
 
 	client.auth(on_auth);
@@ -17,13 +15,11 @@ exports.index = function(req, res){
 //client.database_getlist(callback);
 
 	function callback (err,response){
-    		console.log(response.result);
     		res.json(response.result);
 	}
 
 	function on_auth (err,response,sid){
 	    if (err) throw err;
-	       console.log(sid);
 	    if (response.result.uid){
 		//save session
 		client.session_id = response.result.session_id;
