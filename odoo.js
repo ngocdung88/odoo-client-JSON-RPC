@@ -22,15 +22,15 @@ module.exports = (function () {
             this.host = process.env.HOST_URL || 'localhost';
         }
 
-        if (!this.opts.db){
+        if (!opts || !this.opts.db){
             this.opts.db = process.env.DATABASE;
         }
 
-        if (!this.opts.password){
+        if (!opts || !this.opts.password){
             this.opts.db = process.env.PASSWORD;
         }
 
-        if (!this.opts.login){
+        if (!opts || !this.opts.login){
             this.opts.login = process.env.USER;
         }
 
