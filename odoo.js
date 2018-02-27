@@ -5,7 +5,7 @@ var _ = require('underscore');
 module.exports = (function () {
 
     function odoo(opts) {
-        this.opts = opts;
+        this.opts = opts || {};
         this.session_id = '';
         this.context = '';
         this.sid = '';
