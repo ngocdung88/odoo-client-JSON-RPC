@@ -13,16 +13,28 @@ module.exports = (function () {
         if (opts && opts.port) {
             this.port = opts.port;
         } else {
-            this.port = '8069';
+            this.port = '443';
         }
 
         if (opts && opts.host) {
             this.host = opts.host;
         } else {
-            this.host = 'localhost';
+            this.host = process.env.HOST_URL || 'localhost';
         }
 
-        this.protocol = 'http';
+        if (!this.opts.db){
+            this.opts.db = process.env.DATABASE;
+        }
+
+        if (!this.opts.password){
+            this.opts.db = process.env.PASSWORD;
+        }
+
+        if (!this.opts.login){
+            this.opts.login = process.env.USER;
+        }
+
+        this.protocol = 'https';
         this.base_location = this.protocol + '://' + this.host + ':' + this.port;
 
         this.paths = {
